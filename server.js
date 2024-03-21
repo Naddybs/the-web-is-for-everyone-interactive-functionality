@@ -9,10 +9,29 @@ import express from 'express';
 // Deze app is een object met een aantal methodes die je kunt gebruiken om een server te maken en routes te definiëren
 const app = express();
 
-// 3. Hiermee start je de server op poort 3000
-// De ('app') server luistert naar requests op poort 3000
+// 4. hiermee zeg je dat de server de ejs template engine moet gebruiken
+// De ejs template engine zorgt ervoor dat je dynamische html pagina's kunt maken
+app.set('view engine', 'ejs')
+// De server zoekt de ejs bestanden in de views map
+app.set('views', './views')
+
+// 5. Hiermee zeg je dat de server de public map moet gebruiken voor statische bestanden
+// De public map bevat bestanden die je kunt gebruiken in de html pagina's
+app.use(express.static('public'))
+
+// dit zorgt ervoor dat het werken met request data makkelijker wordt
+app.use(express.urlencoded({extended: true}))
+
+// 6. Hiermee render je de index.ejs pagina
+// De server stuurt de index.ejs pagina terug naar de client
+app.get('/', function (req, res) {
+    res.render('index');
+});
+
+// 3. Hiermee start je de server op poort 4000
+// De ('app') server luistert naar requests op poort 4000
 // De server reageert op requests met de juiste route, de server stuurt een response terug naar de client
-app.set('port', process.env.PORT || 3000)
+app.set('port', process.env.PORT || 4000)
 app.listen(app.get('port'), function () {
   console.log(`Application started on http://localhost:${app.get('port')}`)
 })
