@@ -28,26 +28,56 @@
 
 
 
-<h2>Eerste woning</h2>
+<h2>Eerste woning
+<button class="add-collaborator">+ Voeg een collaborator toe</button></h2>
 <% houses.forEach(function(house) { %>
-    <ul class="house">
-      <li>
+    <section class="house">
         <img src="https://fdnd-agency.directus.app/assets/<%= house.f_houses_id.poster_image %>" alt="Afbeelding van een huis">
-         <h3><%= house.f_houses_id.street %></h3> 
-         <h3><%= house.f_houses_id.house_nr %> <%= house.f_houses_id.nr_addition %></h3>
+      <ul class="house-info">
+      <li>
+        <h3><%= house.f_houses_id.street %> <%= house.f_houses_id.house_nr %> <%= house.f_houses_id.nr_addition %></h3>
       </li>
       <li>
         <p><%= house.f_houses_id.postal_code %></p>
         <p><%= house.f_houses_id.city %></p>
       </li>
       <li>
-        <p><%= house.f_houses_id.price %></p>
+        <p>€<%= house.f_houses_id.price %>K.K.</p>
       </li>
       <li>
-         <p><%= house.f_houses_id.m2 %> m2</p>
-        <p><%= house.f_houses_id.rooms %></p>
+         <p><%= house.f_houses_id.m2 %> m2/<%= house.f_houses_id.rooms %> kamers</p>
       </li>
-    </ul>
+      </ul>
+      <span class="material-symbols-outlined">close</span>
+      <button class="ranking-button">Beoordeling toevoegen</button>
+    </section>
+
+    <section class="ranking-field">
+        <article class="beoordeling">
+            <h3>Beoordeel dit huis</h3>
+          <form id="scoreForm">
+            <label>Algemene beoordeling</label>
+            <input type="range" min="0" max="10" value="5" name="algemeneBeoordeling">
+            <label>Locatie</label>
+            <input type="range" min="0" max="10" value="5" name="locatie">
+            <label>Prijs</label>
+            <input type="range" min="0" max="10" value="5" name="prijs">
+            <label>oppervlakte</label>
+            <input type="range" min="0" max="10" value="5" name="oppervlakte">
+            <label>Ligging</label>
+            <input type="range" min="0" max="10" value="5" name="ligging">
+            <label>Kamers</label>
+            <input type="range" min="0" max="10" value="5" name="kamers">
+          </form>
+          <button class="submit-ranking">Verstuur beoordeling</button>
+      </article>
+
+      <article class="uitkomsten-beoordeling">
+        <h3>Vergelijk de beoordelingen</h3>
+        
+
+      </article>
+    </section>
 <% }) %>
 
 

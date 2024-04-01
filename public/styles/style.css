@@ -176,13 +176,11 @@ body{
 @media screen and (min-width: 768px){
     .intro div{
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin: 1em 6em;
     flex-direction: row;
     }
     .lijsten-banner{
-        margin: 1em 6em;
+       
         background-color: var(--primary-dk-blue);
     }
     nav {
@@ -200,26 +198,110 @@ body{
 }
 
 /* huizen lijst section */
+
+h2{
+    margin: 1em;
+    font-size: 2em;
+    border-bottom: solid 4px var(--primary-orange);
+    padding: .3em;
+    position: relative;
+     button{
+        background-color: var(--primary-orange);
+        color: white;
+        padding: .5em 1em;
+        border: solid 5px var(--primary-dk-blue);
+        border-radius: .5em;
+        font-size: 17px;
+        position: absolute;
+        right: 2em;
+        bottom: 0.4em;
+    }
+}
 .house{
     display: flex;
     flex-direction: row;
     align-items: center;
     margin: 1em;
     padding: 1em;
-    border: solid 5px var(--primary-orange);
+    border-bottom: solid 5px var(--primary-orange);
     border-radius: .5em;
     background-color: var(--primary-lt-blue);
+    position: relative;
     & img{
         max-width: 20em;
     }
-    & h2{
+    & h3, p{
         text-align: center;
+        display: flex;
+        flex-direction: column;
     }
-    & p{
-        text-align: center;
+    & li{
+        list-style: none;
     }
-    & a{
-        text-decoration: none;
-        color: black;
-    }
+
+    & button{
+    background-color: var(--primary-dk-blue);
+    color: white;
+    padding: .5em 1em;
+    border: solid 5px var(--primary-orange);
+    border-radius: .5em;
+    margin: 1em;
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+    font-size: 17px;
 }
+& button:hover{
+    background-color: var(--primary-orange);
+}
+& span{
+    font-size: 2.5em;
+    color: var(--primary-orange);
+    position: absolute;
+    top: 1em;
+    right: 1em;
+}
+}
+@media screen and (max-width: 767px){
+    .house{
+        display: flex;
+        flex-direction: column;
+        & span{
+        position:absolute;
+        top: 0.4em;
+        right: 0.2em;
+        background-color: var(--primary-lt-blue);
+        }
+    }
+     .house button{
+        position: relative;
+        bottom: 1em;
+        right: 0em;
+    } 
+    }
+    
+/* section ranking field pop up */
+.ranking-field{
+    background-color: var(--primary-dk-blue);
+    border: solid 5px var(--accent-yellow);
+    flex-direction: row;
+    display: flex;
+    justify-content: space-around;
+}
+.beoordeling{
+    background-color: var(--primary-lt-blue);
+    border: solid 5px var(--primary-orange);
+    border-radius: .5em;
+    padding: 1em;
+    margin: 1em;
+    & form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 1em;
+    }
+  
+   
+
+}
+
