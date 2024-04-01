@@ -1,1 +1,64 @@
-<h1>hoi</h1>
+<%- include('./partials/head') %> 
+
+
+<main>
+ <section class="intro">
+    <h1>Gedeelde favorieten</h1>
+    <div>
+        <section class="lijsten">
+            <form type="submit">
+                <input type="text" name="list" placeholder="Add a new list">
+                <button type="submit">+</button>
+            </form>
+            <ul>
+                <li><a id="list-item1" href="#">Eerste woning</a><button id="delete-button">X</button></li>
+                <li><a id="list-item2" href="#">Oma's garage</a><button id="delete-button">X</button></li>
+                <li><a id="list-item3" href="#">FDND studio</a><button id="delete-button">X</button></li>
+            </ul>
+        </section>
+
+        <article class="lijsten-banner">
+            <h2>Lijsten</h2>
+            <p>Maak een nieuwe lijst aan of kies een bestaande lijst om je bewaarde huizen te organiseren.</p>
+            <img src="/assets/Funda-illustratie.png" alt="Funda illustratie">
+        </article>
+    </div>
+</section>
+
+
+
+
+<h2>Eerste woning</h2>
+<% houses.forEach(function(house) { %>
+    <ul class="house">
+      <li>
+        <img src="https://fdnd-agency.directus.app/assets/<%= house.f_houses_id.poster_image %>" alt="Afbeelding van een huis">
+         <h3><%= house.f_houses_id.street %></h3> 
+         <h3><%= house.f_houses_id.house_nr %> <%= house.f_houses_id.nr_addition %></h3>
+      </li>
+      <li>
+        <p><%= house.f_houses_id.postal_code %></p>
+        <p><%= house.f_houses_id.city %></p>
+      </li>
+      <li>
+        <p><%= house.f_houses_id.price %></p>
+      </li>
+      <li>
+         <p><%= house.f_houses_id.m2 %> m2</p>
+        <p><%= house.f_houses_id.rooms %></p>
+      </li>
+    </ul>
+<% }) %>
+
+
+
+</main>
+
+
+
+
+
+
+
+</body>
+</html>
