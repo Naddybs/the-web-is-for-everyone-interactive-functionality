@@ -287,21 +287,45 @@ h2{
     flex-direction: row;
     display: flex;
     justify-content: space-around;
+    display: none;
+& .submit-ranking{
+    background-color: var(--primary-orange);
+    color: white;
+    padding: .5em 1em;
+    border: solid 5px var(--primary-dk-blue);
+    border-radius: .5em;
+    font-size: 17px;
+    align-self: center;
+
 }
-.beoordeling{
+    
+}
+.show-ranking{
+    display: flex;
+}
+.beoordeling, .uitkomsten-beoordeling{
     background-color: var(--primary-lt-blue);
     border: solid 5px var(--primary-orange);
     border-radius: .5em;
     padding: 1em;
     margin: 1em;
+    width:25em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     & form{
         display: flex;
         flex-direction: column;
         align-items: center;
         margin: 1em;
     }
-  
-   
+}
 
+.slider{
+    margin-right: 10px;
+}
+
+.sliderValue {
+    font-weight: bold;
 }
 

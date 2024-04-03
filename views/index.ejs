@@ -55,26 +55,44 @@
     <section class="ranking-field">
         <article class="beoordeling">
             <h3>Beoordeel dit huis</h3>
-          <form id="scoreForm">
+          <form id="scoreForm" action="/" method="POST">
             <label>Algemene beoordeling</label>
-            <input type="range" min="0" max="10" value="5" name="algemeneBeoordeling">
+            <input type="range" min="0" max="10" value="0" name="algemeneBeoordeling" class="slider">
+            <span class="sliderValue">0</span>
+
             <label>Locatie</label>
-            <input type="range" min="0" max="10" value="5" name="locatie">
+            <input type="range" min="0" max="10" value="0" name="locatie" class="slider">
+            <span class="sliderValue">0</span>
+
             <label>Prijs</label>
-            <input type="range" min="0" max="10" value="5" name="prijs">
+            <input type="range" min="0" max="10" value="0" name="prijs" class="slider">
+            <span class="sliderValue">0</span>
+
+
             <label>oppervlakte</label>
-            <input type="range" min="0" max="10" value="5" name="oppervlakte">
+            <input type="range" min="0" max="10" value="0" name="oppervlakte" class="slider">
+            <span class="sliderValue">0</span>
+
             <label>Ligging</label>
-            <input type="range" min="0" max="10" value="5" name="ligging">
+            <input type="range" min="0" max="10" value="0" name="ligging" class="slider">
+            <span class="sliderValue">0</span>
+
             <label>Kamers</label>
-            <input type="range" min="0" max="10" value="5" name="kamers">
-          </form>
-          <button class="submit-ranking">Verstuur beoordeling</button>
+            <input type="range" min="0" max="10" value="0" name="kamers" class="slider">
+            <span class="sliderValue">0</span>
+          <button type="submit" class="submit-ranking">Verstuur beoordeling</button>
+            </form>
       </article>
 
       <article class="uitkomsten-beoordeling">
         <h3>Vergelijk de beoordelingen</h3>
-        
+        <% if (algemeen.length > 0) { %>
+            <% algemeen.forEach(number =>{ %>
+                <li class="message">Cijfer algemeen: <%= number %></li>
+            <% }) %>
+        <% } else { %>
+            <li class="message">Cijfer algemeen: No number entered</li>
+        <% } %>
 
       </article>
     </section>

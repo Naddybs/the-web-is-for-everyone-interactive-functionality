@@ -45,10 +45,22 @@ app.get('/', function (req, res) {
     fetchJson(apiUrl).then((apiData) => {
         if (apiData && apiData.data) { // Controleer of apiData en apiData.data bestaan
             console.log(apiData.data);
-            res.render('index', {houses: apiData.data.houses}); // Stuur het naar de index.ejs
+            res.render('index', {houses: apiData.data.houses, 
+                algemeen: algemeen}); // Stuur het naar de index.ejs
             console.log(apiData.data.houses);
         }
     })
+});
+
+const algemeen = [] 
+app.post('/', (req, res) => {
+    // req.body bevat de data van het formulier
+    console.log(req.body);
+    algemeen.push(req.body.algemeneBeoordeling);
+    // Verwerk de data hier (bijvoorbeeld opslaan in een database)
+    // Stuur een response terug, zoals een redirect of een boodschap
+    res.redirect(303,'/');
+    console.log('Beoordeling opgeslagen');
 });
 
 
