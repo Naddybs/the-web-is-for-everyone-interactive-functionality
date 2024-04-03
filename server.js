@@ -14,6 +14,7 @@ console.log(apiUrl)
 fetchJson(`https://fdnd-agency.directus.app/items/f_list/${9}?fields=*.*.*`).then((apiData) => {
     console.log(apiData)
 });
+
 // 2. Hiermee maak je een nieuwe express app
 // Deze app is een object met een aantal methodes die je kunt gebruiken om een server te maken en routes te definiëren
 const app = express();
@@ -32,27 +33,28 @@ app.use(express.static('public'))
 // dit zorgt ervoor dat het werken met request data makkelijker wordt
 app.use(express.urlencoded({extended: true}))
 
-// 6. Hiermee render je de index.ejs pagina
-// De server stuurt de index.ejs pagina terug naar de client
-// De server stuurt de data van de api mee naar de client
-// app.get('/', function (req, res) {
-//     fetchJson(apiUrl).then((apiData)  => {
-//         console.log(apiData)
-//         res.render('index', {houses: apiData.data})
-//     })
-// })
-app.get('/', function (req, res) {
+
+// hiermee maak je een array aan waarin je de beoordelingen van de gebruiker opslaat
+// deze array wordt gebruikt om de beoordelingen van de gebruiker te tonen op de pagina
+const algemeen = [] 
+
+// 6. Hiermee definieer je een route voor de homepagina
+// De route is een http GET request naar de homepagina
+// De server reageert op de request met een response
+// De response is een html pagina die gerenderd wordt met de ejs template engine
+// De response bevat de data van de api
+// De data van de api wordt in de html pagina getoond
+// De data van de api bevat de huizen en de beoordelingen van de gebruiker
+// De beoordelingen van de gebruiker worden opgeslagen in de algemeen array
+// De beoordelingen van de gebruiker worden getoond op de pagina
+app.get('/', function (request, response) {
     fetchJson(apiUrl).then((apiData) => {
-        if (apiData && apiData.data) { // Controleer of apiData en apiData.data bestaan
-            console.log(apiData.data);
-            res.render('index', {houses: apiData.data.houses, 
-                algemeen: algemeen}); // Stuur het naar de index.ejs
-            console.log(apiData.data.houses);
-        }
+        response.render('index.ejs', 
+        {houses: apiData.data.houses, 
+        algemeen: algemeen});
     })
 });
 
-const algemeen = [] 
 app.post('/', (req, res) => {
     // req.body bevat de data van het formulier
     console.log(req.body);
@@ -68,7 +70,7 @@ app.post('/', (req, res) => {
 // 3. Hiermee start je de server op poort 4000
 // De ('app') server luistert naar requests op poort 4000
 // De server reageert op requests met de juiste route, de server stuurt een response terug naar de client
-app.set('port', process.env.PORT || 4000)
+app.set('port', process.env.PORT || 8000)
 app.listen(app.get('port'), function () {
   console.log(`Application started on http://localhost:${app.get('port')}`)
 })

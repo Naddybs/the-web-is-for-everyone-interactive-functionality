@@ -3,17 +3,23 @@
 // en voegt een event listener toe aan elke button
 // de event listener reageert op een click event
 document.querySelectorAll('.ranking-button').forEach(button => {
-    button.addEventListener('click', function() {
-        // Vind de dichtstbijzijnde parent section van de geklikte button
+
+          // Vind de dichtstbijzijnde parent section van de geklikte button
         // De parent section bevat zowel de button als de ranking-sectie
         // De closest() methode zoekt naar het dichtstbijzijnde element dat voldoet aan de opgegeven selector
         const parentSection = button.closest('.house');
 
         // Vind de ranking-sectie die direct volgt na de ouder sectie
         const rankingSection = parentSection.nextElementSibling;
+
+    
+    rankingSection.classList.add('show-hide-ranking');
+
+    button.addEventListener('click', function() {
+  
         // Toggle een class om te tonen/verbergen 
         // De class 'show-ranking' bevat de CSS regels om de ranking-sectie te tonen
-        rankingSection.classList.toggle('show-ranking');
+        rankingSection.classList.toggle('show-hide-ranking');
     });
 });
 
